@@ -39,12 +39,12 @@ const ShowClasses = () => {
   const deleteHandler = (deleteID, address) => {
     console.log(deleteID);
     console.log(address);
-    setMessage("Sorry the delete function has been disabled for now.")
+    setMessage("delete seccussfully")
     setShowPopup(true)
-    // dispatch(deleteUser(deleteID, address))
-    //   .then(() => {
-    //     dispatch(getAllSclasses(adminID, "Sclass"));
-    //   })
+    dispatch(deleteUser(deleteID, address))
+      .then(() => {
+        dispatch(getAllSclasses(adminID, "Sclass"));
+      })
   }
 
   const sclassColumns = [
@@ -174,7 +174,7 @@ export default ShowClasses;
 const styles = {
   styledPaper: {
     overflow: 'visible',
-    filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+    filter: 'drop-shadow(0px 2px 8px rgba(0, 180, 12, 0.32))',
     mt: 1.5,
     '& .MuiAvatar-root': {
       width: 32,

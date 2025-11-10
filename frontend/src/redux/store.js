@@ -7,6 +7,7 @@ import { teacherReducer } from './teacherRelated/teacherSlice';
 import { complainReducer } from './complainRelated/complainSlice';
 
 const store = configureStore({
+    
     reducer: {
         user: userReducer,
         student: studentReducer,

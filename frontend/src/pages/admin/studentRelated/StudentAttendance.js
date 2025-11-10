@@ -90,7 +90,7 @@ const StudentAttendance = ({ situation }) => {
             {loading
                 ?
                 <>
-                    <div>Loading...</div>
+                    <div>Error Loading...</div>
                 </>
                 :
                 <>

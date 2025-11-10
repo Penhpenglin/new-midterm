@@ -46,7 +46,7 @@ const AddNotice = () => {
       <div className="register">
         <form className="registerForm" onSubmit={submitHandler}>
           <span className="registerTitle">Add Notice</span>
-          <label>Title</label>
+          <label>Titles</label>
           <input className="registerInput" type="text" placeholder="Enter notice title..."
             value={title}
             onChange={(event) => setTitle(event.target.value)}
