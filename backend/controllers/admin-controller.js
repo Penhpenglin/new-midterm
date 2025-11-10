@@ -65,10 +65,10 @@ const adminRegister = async (req, res) => {
         const existingSchool = await Admin.findOne({ schoolName: req.body.schoolName });
 
         if (existingAdminByEmail) {
-            res.send({ message: 'Email already exists' });
+            res.send({ message: 'Emails already exists' });
         }
         else if (existingSchool) {
-            res.send({ message: 'School name already exists' });
+            res.send({ message: 'Schools name already exists' });
         }
         else {
             let result = await admin.save();
