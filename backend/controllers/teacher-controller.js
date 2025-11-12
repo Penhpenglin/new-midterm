@@ -147,7 +147,7 @@ const deleteTeachersByClass = async (req, res) => {
         const deletedCount = deletionResult.deletedCount || 0;
 
         if (deletedCount === 0) {
-            res.send({ message: "No teachers found to delete" });
+            res.send({ message: "Don't have teacher to delete" });
             return;
         }
 

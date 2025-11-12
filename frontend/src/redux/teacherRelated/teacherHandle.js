@@ -8,6 +8,7 @@ import {
     doneSuccess
 } from './teacherSlice';
 
+
 export const getAllTeachers = (id) => async (dispatch) => {
     dispatch(getRequest());
 

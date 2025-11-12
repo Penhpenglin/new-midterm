@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'  
 import { 
     KeyboardArrowDown, 
     KeyboardArrowUp,
@@ -24,11 +24,11 @@ import {
     Container,
     Alert
 } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux'; 
 import { getUserDetails } from '../../redux/userRelated/userHandle';
-import { calculateOverallAttendancePercentage, calculateSubjectAttendancePercentage, groupAttendanceBySubject } from '../../components/attendanceCalculator';
+import { calculateOverallAttendancePercentage, calculateSubjectAttendancePercentage, groupAttendanceBySubject } from '../../components/attendanceCalculator';       
 
-import CustomBarChart from '../../components/CustomBarChart'
+import CustomBarChart from '../../components/CustomBarChart'    ;                                                                                                              
 
 import InsertChartIcon from '@mui/icons-material/InsertChart';
 import InsertChartOutlinedIcon from '@mui/icons-material/InsertChartOutlined';

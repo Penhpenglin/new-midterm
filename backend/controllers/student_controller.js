@@ -150,7 +150,7 @@ const updateExamResult = async (req, res) => {
         const student = await Student.findById(req.params.id);
 
         if (!student) {
-            return res.send({ message: 'Student not found' });
+            return res.send({ message: 'Student is not found' });
         }
 
         const existingResult = student.examResult.find(
@@ -177,7 +177,7 @@ const studentAttendance = async (req, res) => {
         const student = await Student.findById(req.params.id);
 
         if (!student) {
-            return res.send({ message: 'Student not found' });
+            return res.send({ message: 'Student is not found' });
         }
 
         const subject = await Subject.findById(subName);
@@ -190,7 +190,8 @@ const studentAttendance = async (req, res) => {
 
         if (existingAttendance) {
             existingAttendance.status = status;
-        } else {
+        } else {  
+            // I'll will check again when student still error
             // Check if the student has already attended the maximum number of sessions
             const attendedSessions = student.attendance.filter(
                 (a) => a.subName.toString() === subName

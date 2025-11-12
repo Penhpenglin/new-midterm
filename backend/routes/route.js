@@ -25,16 +25,18 @@ const {
 const { subjectCreate, classSubjects, deleteSubjectsByClass, getSubjectDetail, deleteSubject, freeSubjectList, allSubjects, deleteSubjects } = require('../controllers/subject-controller.js');
 const { teacherRegister, teacherLogIn, getTeachers, getTeacherDetail, deleteTeachers, deleteTeachersByClass, deleteTeacher, updateTeacherSubject, teacherAttendance } = require('../controllers/teacher-controller.js');
 
-// Admin
+// Admin api
 router.post('/AdminReg', adminRegister);
 router.post('/AdminLogin', adminLogIn);
 
 router.get("/Admin/:id", getAdminDetail)
-// router.delete("/Admin/:id", deleteAdmin)
 
+// This code admin already have been declared
+
+// router.delete("/Admin/:id", deleteAdmin)
 // router.put("/Admin/:id", updateAdmin)
 
-// Student
+// my Student api
 
 router.post('/StudentReg', studentRegister);
 router.post('/StudentLogin', studentLogIn)
@@ -58,7 +60,7 @@ router.put('/RemoveAllStudentsAtten/:id', clearAllStudentsAttendance);
 router.put('/RemoveStudentSubAtten/:id', removeStudentAttendanceBySubject);
 router.put('/RemoveStudentAtten/:id', removeStudentAttendance)
 
-// Teacher
+// my Teacher api
 
 router.post('/TeacherReg', teacherRegister);
 router.post('/TeacherLogin', teacherLogIn)
@@ -74,7 +76,7 @@ router.put("/TeacherSubject", updateTeacherSubject)
 
 router.post('/TeacherAttendance/:id', teacherAttendance)
 
-// Notice
+//  my Notice api 
 
 router.post('/NoticeCreate', noticeCreate);
 
@@ -85,13 +87,13 @@ router.delete("/Notice/:id", deleteNotice)
 
 router.put("/Notice/:id", updateNotice)
 
-// Complain
+//  my Complain api
 
 router.post('/ComplainCreate', complainCreate);
 
 router.get('/ComplainList/:id', complainList);
 
-// Sclass
+//  my Sclass api
 
 router.post('/SclassCreate', sclassCreate);
 
@@ -103,7 +105,7 @@ router.get("/Sclass/Students/:id", getSclassStudents)
 router.delete("/Sclasses/:id", deleteSclasses)
 router.delete("/Sclass/:id", deleteSclass)
 
-// Subject
+// my Subject api 
 
 router.post('/SubjectCreate', subjectCreate);
 
