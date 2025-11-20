@@ -8,93 +8,101 @@ import { LightPurpleButton } from '../components/buttonStyles';
         
 const Homepage = () => {        
   return (        
-    <StyledContainer>       
-      {/* Animated Background Elements */}        
-      <FloatingShapes>        
-        <Shape1 />        
-        <Shape2 />        
-        <Shape3 />        
-      </FloatingShapes>       
+    <FullPageContainer>       
+      {/* Animated Background Layers */}        
+      <BackgroundGradient />        
+      <AnimatedParticles />        
+      <FloatingOrbs />        
+      <LightBeams />        
           
-      <Grid container spacing={0} alignItems="center">        
-        {/* Image Section */}       
-        <Grid item xs={12} md={6}>        
-          <ImageContainer>        
-            <AnimatedImage src={Setec} alt="SETEC Institute" />       
-            <ImageGlow />       
-          </ImageContainer>       
+      {/* Main Content */}        
+      <ContentWrapper>        
+        <Grid container spacing={0} alignItems="center" justifyContent="center">        
+          {/* Image Section */}       
+          <Grid item xs={12} md={6}>        
+            <ImageSection>        
+              <ImageContainer>        
+                <AnimatedImage src={Setec} alt="SETEC Institute" />       
+                <ImageGlow />       
+                <ImageReflection />       
+              </ImageContainer>       
+            </ImageSection>       
+          </Grid>       
+              
+          {/* Text + Buttons Section */}        
+          <Grid item xs={12} md={6}>        
+            <ContentSection>        
+              <LogoSection>       
+                <AnimatedIcon>        
+                  <School className="logo-icon" />        
+                </AnimatedIcon>        
+                <TitleContainer>        
+                  <MainTitle>       
+                    Welcome To        
+                    <br />        
+                    <GradientText>SETEC INSTITUTE</GradientText>        
+                    <br />        
+                    <SubTitle>Excellent Tertiary Education</SubTitle>       
+                  </MainTitle>        
+                </TitleContainer>        
+              </LogoSection>        
+          
+              <DescriptionText>        
+                Transform your educational experience with our comprehensive management system.         
+                Streamline school operations, track academic progress, and foster seamless        
+                communication between students, teachers, and administrators.       
+              </DescriptionText>       
+          
+              <FeaturesContainer>        
+                <FeatureItem>       
+                  <AnimatedDot />        
+                  <FeatureText>Smart Attendance Tracking</FeatureText>        
+                </FeatureItem>        
+                <FeatureItem>       
+                  <AnimatedDot />        
+                  <FeatureText>Performance Analytics</FeatureText>        
+                </FeatureItem>        
+                <FeatureItem>       
+                  <AnimatedDot />        
+                  <FeatureText>Real-time Communication</FeatureText>        
+                </FeatureItem>        
+              </FeaturesContainer>       
+          
+              <ActionButtons>       
+                <ButtonLink to="/choose">       
+                  <PrimaryButton         
+                    variant="contained"         
+                    fullWidth       
+                    startIcon={<Login />}       
+                  >       
+                    Sign In to Account        
+                  </PrimaryButton>       
+                </ButtonLink>       
+          
+                <ButtonLink to="/chooseasguest">        
+                  <SecondaryButton        
+                    variant="outlined"        
+                    fullWidth       
+                    startIcon={<Person />}        
+                  >       
+                    Continue as Guest       
+                  </SecondaryButton>        
+                </ButtonLink>       
+          
+                <SignupPrompt>       
+                  <PromptText>        
+                    New to SETEC?{' '}        
+                    <SignupLink to="/Adminregister">        
+                      Create Administrator Account        
+                    </SignupLink>       
+                  </PromptText>       
+                </SignupPrompt>        
+              </ActionButtons>        
+            </ContentSection>       
+          </Grid>       
         </Grid>       
-          
-        {/* Text + Buttons Section */}        
-        <Grid item xs={12} md={6}>        
-          <ContentPaper>        
-            <LogoSection>       
-              <School className="logo-icon" />        
-              <StyledTitle>       
-                Welcome To        
-                <br />        
-                <HighlightText>SETEC INSTITUTE</HighlightText>        
-                <br />        
-                <Subtitle>Excellent Tertiary Education</Subtitle>       
-              </StyledTitle>        
-            </LogoSection>        
-          
-            <StyledText>        
-              Transform your educational experience with our comprehensive management system.         
-              Streamline school operations, track academic progress, and foster seamless        
-              communication between students, teachers, and administrators.       
-            </StyledText>       
-          
-            <FeaturesGrid>        
-              <FeatureItem>       
-                <FeatureDot />        
-                <span>Smart Attendance Tracking</span>        
-              </FeatureItem>        
-              <FeatureItem>       
-                <FeatureDot />        
-                <span>Performance Analytics</span>        
-              </FeatureItem>        
-              <FeatureItem>       
-                <FeatureDot />        
-                <span>Real-time Communication</span>        
-              </FeatureItem>        
-            </FeaturesGrid>       
-          
-            <StyledBox>       
-              <StyledLink to="/choose">       
-                <AnimatedButton         
-                  as={LightPurpleButton}        
-                  variant="contained"         
-                  fullWidth       
-                  startIcon={<Login />}       
-                >       
-                  Sign In to Account        
-                </AnimatedButton>       
-              </StyledLink>       
-          
-              <StyledLink to="/chooseasguest">        
-                <AnimatedOutlineButton        
-                  variant="outlined"        
-                  fullWidth       
-                  startIcon={<Person />}        
-                >       
-                  Continue as Guest       
-                </AnimatedOutlineButton>        
-              </StyledLink>       
-          
-              <SignupSection>       
-                <StyledText>        
-                  New to SETEC?{' '}        
-                  <AnimatedLink to="/Adminregister">        
-                    Create Administrator Account        
-                  </AnimatedLink>       
-                </StyledText>       
-              </SignupSection>        
-            </StyledBox>        
-          </ContentPaper>       
-        </Grid>       
-      </Grid>       
-    </StyledContainer>        
+      </ContentWrapper>        
+    </FullPageContainer>        
   );        
 };        
         
@@ -112,7 +120,7 @@ const fadeInUp = keyframes`
   }       
 `;        
         
-const floatAnimation = keyframes`       
+const float = keyframes`       
   0%, 100% { transform: translateY(0px) rotate(0deg); }       
   50% { transform: translateY(-20px) rotate(5deg); }        
 `;        
@@ -123,7 +131,7 @@ const gradientFlow = keyframes`
   100% { background-position: 0% 50%; }       
 `;        
         
-const pulseGlow = keyframes`        
+const pulse = keyframes`        
   0%, 100% {        
     box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);        
     transform: scale(1);        
@@ -134,7 +142,7 @@ const pulseGlow = keyframes`
   }       
 `;        
         
-const slideInRight = keyframes`       
+const slideIn = keyframes`       
   from {        
     opacity: 0;         
     transform: translateX(-50px);         
@@ -164,174 +172,218 @@ const shapeFloat = keyframes`
   }       
 `;        
         
-// 🏗️ Styled Components       
-const StyledContainer = styled(Container)`        
-  display: flex;        
-  justify-content: center;        
-  align-items: center;        
-  min-height: 100vh;        
-  background: linear-gradient(135deg, #0c2c1d 0%, #1a4d2e 50%, #2d6a4f 100%);       
-  background-size: 400% 400%;       
-  animation: ${gradientFlow} 8s ease infinite;        
-  position: relative;       
-  overflow: hidden;       
+const particleFloat = keyframes`        
+  0% {        
+    transform: translateY(100vh) rotate(0deg);        
+    opacity: 0;       
+  }       
+  10% {        
+    opacity: 1;       
+  }       
+  90% {        
+    opacity: 0.5;       
+  }       
+  100% {        
+    transform: translateY(-100px) rotate(360deg);        
+    opacity: 0;       
+  }       
 `;        
         
-const FloatingShapes = styled.div`        
-  position: absolute;       
+const orbPulse = keyframes`        
+  0%, 100% {        
+    transform: scale(1);        
+    opacity: 0.3;       
+  }       
+  50% {        
+    transform: scale(1.2);        
+    opacity: 0.6;       
+  }       
+`;        
+        
+const beamRotate = keyframes`        
+  0% {        
+    transform: rotate(0deg);        
+  }       
+  100% {        
+    transform: rotate(360deg);        
+  }       
+`;        
+        
+const glow = keyframes`        
+  0%, 100% {        
+    filter: blur(20px) opacity(0.3);        
+  }       
+  50% {        
+    filter: blur(30px) opacity(0.6);        
+  }       
+`;        
+        
+const reflect = keyframes`        
+  0% {        
+    transform: translateY(0) scaleX(1);        
+    opacity: 0.3;       
+  }       
+  100% {        
+    transform: translateY(20px) scaleX(0.95);        
+    opacity: 0.1;       
+  }       
+`;        
+        
+// 🏗️ Styled Components       
+const FullPageContainer = styled.div`        
+  min-height: 100vh;        
+  width: 100%;        
+  position: relative;       
+  overflow: hidden;       
+  background: #000;        
+`;        
+        
+const BackgroundGradient = styled.div`        
+  position: fixed;       
+  top: 0;       
+  left: 0;        
+  width: 100%;        
+  height: 100%;       
+  background: linear-gradient(135deg,        
+    #0c2c1d 0%,        
+    #1a4d2e 25%,        
+    #2d6a4f 50%,        
+    #1e4d2c 75%,        
+    #0f2e1c 100%        
+  );       
+  background-size: 400% 400%;       
+  animation: ${gradientFlow} 12s ease infinite;        
+  z-index: 1;       
+`;        
+        
+const AnimatedParticles = styled.div`        
+  position: fixed;       
   top: 0;       
   left: 0;        
   width: 100%;        
   height: 100%;       
   pointer-events: none;       
-  z-index: 0;       
-`;        
-        
-const Shape1 = styled.div`        
-  position: absolute;       
-  top: 10%;       
-  left: 10%;        
-  width: 100px;       
-  height: 100px;        
-  background: rgba(0, 255, 136, 0.1);       
-  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;       
-  animation: ${shapeFloat} 20s infinite linear;       
-`;        
-        
-const Shape2 = styled.div`        
-  position: absolute;       
-  top: 70%;       
-  right: 15%;       
-  width: 150px;       
-  height: 150px;        
-  background: rgba(23, 158, 75, 0.08);        
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;       
-  animation: ${shapeFloat} 25s infinite linear reverse;       
-`;        
-        
-const Shape3 = styled.div`        
-  position: absolute;       
-  top: 30%;       
-  right: 20%;       
-  width: 80px;        
-  height: 80px;       
-  background: rgba(0, 255, 136, 0.05);        
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;       
-  animation: ${shapeFloat} 18s infinite linear;       
-`;        
-        
-const ContentPaper = styled.div`        
-  padding: 50px 40px;       
-  height: 100vh;        
-  display: flex;        
-  flex-direction: column;       
-  justify-content: center;        
-  position: relative;       
   z-index: 2;       
-  animation: ${slideInRight} 1.2s ease-out;       
-`;        
         
-const LogoSection = styled.div`       
-  text-align: center;       
-  margin-bottom: 30px;        
-        
-  .logo-icon {        
-    font-size: 3rem !important;       
-    color: #00ff88ff;       
-    margin-bottom: 15px;        
-    animation: ${floatAnimation} 3s ease-in-out infinite;       
+  &::before {        
+    content: '';        
+    position: absolute;       
+    width: 100%;        
+    height: 100%;        
+    background-image:        
+      radial-gradient(2px 2px at 20px 30px, rgba(0, 255, 136, 0.3), transparent),        
+      radial-gradient(2px 2px at 40px 70px, rgba(0, 255, 136, 0.2), transparent),        
+      radial-gradient(1px 1px at 90px 40px, rgba(0, 255, 136, 0.4), transparent),        
+      radial-gradient(1px 1px at 130px 80px, rgba(0, 255, 136, 0.2), transparent),        
+      radial-gradient(2px 2px at 160px 30px, rgba(0, 255, 136, 0.3), transparent);       
+    background-repeat: repeat;        
+    background-size: 200px 200px;       
+    animation: ${particleFloat} 20s linear infinite;        
   }       
 `;        
         
-const StyledTitle = styled(Typography).attrs({ variant: 'h2' })`        
-  font-weight: 700 !important;        
-  font-size: 2.8rem !important;       
-  letter-spacing: 0.5px;        
-  text-align: center;       
-  margin-bottom: 10px !important;       
-  animation: ${fadeInUp} 1s ease-out;       
-  line-height: 1.2 !important;        
+const FloatingOrbs = styled.div`        
+  position: fixed;       
+  top: 0;       
+  left: 0;        
+  width: 100%;        
+  height: 100%;       
+  pointer-events: none;       
+  z-index: 2;       
+        
+  &::before,        
+  &::after {        
+    content: '';        
+    position: absolute;       
+    border-radius: 50%;       
+    animation: ${orbPulse} 8s ease-in-out infinite;        
+  }       
+        
+  &::before {        
+    width: 300px;       
+    height: 300px;        
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);        
+    top: 10%;       
+    left: 10%;        
+    animation-delay: 0s;       
+  }       
+        
+  &::after {        
+    width: 400px;       
+    height: 400px;        
+    background: radial-gradient(circle, rgba(23, 158, 75, 0.08) 0%, transparent 70%);        
+    bottom: 10%;       
+    right: 10%;        
+    animation-delay: 2s;       
+  }       
 `;        
         
-const HighlightText = styled.span`        
-  background: linear-gradient(135deg, #00ff88ff, #00e676, #00ff88ff);       
-  -webkit-background-clip: text;        
-  -webkit-text-fill-color: transparent;       
-  background-size: 200% 200%;       
-  animation: ${gradientFlow} 3s ease infinite;        
-  font-weight: 800;       
+const LightBeams = styled.div`        
+  position: fixed;       
+  top: 50%;       
+  left: 50%;        
+  transform: translate(-50%, -50%);       
+  width: 200vw;       
+  height: 200vh;        
+  background:        
+    radial-gradient(circle at center, transparent 30%, rgba(0, 255, 136, 0.03) 70%),        
+    conic-gradient(        
+      from 0deg at 50% 50%,        
+      rgba(0, 255, 136, 0.02) 0deg,        
+      rgba(0, 255, 136, 0.01) 90deg,        
+      rgba(0, 255, 136, 0.02) 180deg,        
+      rgba(0, 255, 136, 0.01) 270deg,        
+      rgba(0, 255, 136, 0.02) 360deg        
+    );       
+  animation: ${beamRotate} 60s linear infinite;        
+  z-index: 1;       
+  pointer-events: none;       
 `;        
         
-const Subtitle = styled.span`       
-  font-size: 1.4rem;        
-  font-weight: 300;       
-  color: rgba(255, 255, 255, 0.9);        
-  display: block;       
-  margin-top: 10px;       
-`;        
-        
-const StyledText = styled(Typography).attrs({ variant: 'body1' })`        
-  margin: 25px 0;       
-  letter-spacing: 0.3px;        
-  line-height: 1.7 !important;        
-  text-align: center;       
-  color: rgba(255, 255, 255, 0.85);       
-  animation: ${fadeInUp} 1.4s ease-out;       
-  font-weight: 300 !important;        
-`;        
-        
-const FeaturesGrid = styled.div`        
-  display: flex;        
-  flex-direction: column;       
-  gap: 12px;        
-  margin: 25px 0;       
-  animation: ${fadeInUp} 1.6s ease-out;       
-`;        
-        
-const FeatureItem = styled.div`       
+const ContentWrapper = styled(Container)`        
+  position: relative;       
+  z-index: 3;       
+  min-height: 100vh;        
   display: flex;        
   align-items: center;        
-  gap: 12px;        
-  color: rgba(255, 255, 255, 0.9);        
-  font-size: 0.95rem;       
+  padding: 0 !important;       
+  margin: 0 !important;       
+  max-width: 100% !important;       
 `;        
         
-const FeatureDot = styled.div`        
-  width: 8px;       
-  height: 8px;        
-  border-radius: 50%;       
-  background: #00ff88ff;        
-  animation: ${pulseGlow} 2s infinite;        
-`;        
-        
-const StyledBox = styled(Box)`        
+const ImageSection = styled.div`        
   display: flex;        
-  flex-direction: column;       
-  align-items: center;        
   justify-content: center;        
-  gap: 20px;        
-  padding: 30px 0;        
-  animation: ${fadeInUp} 1.8s ease-out;       
+  align-items: center;        
+  height: 100vh;        
+  padding: 40px;        
 `;        
         
 const ImageContainer = styled.div`        
   position: relative;       
-  padding: 20px;        
-  animation: ${fadeInUp} 1s ease-out;       
+  display: flex;        
+  justify-content: center;        
+  align-items: center;        
+  animation: ${fadeInUp} 1.2s ease-out;       
 `;        
         
 const AnimatedImage = styled.img`       
   width: 100%;        
   max-width: 500px;       
   border-radius: 20px;        
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);       
+  box-shadow:        
+    0 20px 60px rgba(0, 0, 0, 0.4),        
+    0 0 0 1px rgba(0, 255, 136, 0.1);       
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);       
   position: relative;       
   z-index: 2;       
+  backdrop-filter: blur(10px);        
         
   &:hover {       
-    transform: scale(1.05) rotate(2deg);        
-    box-shadow: 0 30px 80px rgba(0, 255, 136, 0.2);       
+    transform: scale(1.05) rotate(1deg);        
+    box-shadow:        
+      0 30px 80px rgba(0, 255, 136, 0.3),        
+      0 0 0 1px rgba(0, 255, 136, 0.2);       
   }       
 `;        
         
@@ -340,65 +392,218 @@ const ImageGlow = styled.div`
   top: 50%;       
   left: 50%;        
   transform: translate(-50%, -50%);       
-  width: 80%;       
-  height: 80%;        
-  background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);        
-  filter: blur(20px);       
-  animation: ${pulseGlow} 3s ease-in-out infinite;        
+  width: 90%;       
+  height: 90%;        
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.15) 0%, transparent 60%);        
+  animation: ${glow} 3s ease-in-out infinite;        
+  z-index: 1;       
+  border-radius: 20px;       
 `;        
         
-const StyledLink = styled(Link)`        
+const ImageReflection = styled.div`        
+  position: absolute;       
+  top: calc(100% + 20px);       
+  left: 50%;        
+  transform: translateX(-50%);       
+  width: 80%;       
+  height: 40px;        
+  background: linear-gradient(        
+    to bottom,        
+    rgba(0, 255, 136, 0.2) 0%,        
+    transparent 100%        
+  );       
+  border-radius: 50%;       
+  filter: blur(10px);       
+  animation: ${reflect} 2s ease-in-out infinite alternate;        
+  z-index: 1;       
+`;        
+        
+const ContentSection = styled.div`        
+  padding: 60px 40px;       
+  height: 100vh;        
+  display: flex;        
+  flex-direction: column;       
+  justify-content: center;        
+  position: relative;       
+  animation: ${slideIn} 1.2s ease-out;       
+  backdrop-filter: blur(10px);        
+  background: rgba(0, 0, 0, 0.2);        
+  border-radius: 20px;       
+  margin: 20px;        
+`;        
+        
+const LogoSection = styled.div`       
+  text-align: center;       
+  margin-bottom: 40px;        
+`;        
+        
+const AnimatedIcon = styled.div`        
+  .logo-icon {        
+    font-size: 4rem !important;       
+    color: #00ff88ff;       
+    margin-bottom: 20px;        
+    animation: ${float} 4s ease-in-out infinite;       
+    filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.5));       
+  }       
+`;        
+        
+const TitleContainer = styled.div`        
+  animation: ${fadeInUp} 1s ease-out;       
+`;        
+        
+const MainTitle = styled(Typography).attrs({ variant: 'h2' })`        
+  font-weight: 800 !important;        
+  font-size: 3rem !important;       
+  letter-spacing: 1px;        
+  text-align: center;       
+  margin-bottom: 15px !important;       
+  line-height: 1.1 !important;        
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);       
+`;        
+        
+const GradientText = styled.span`        
+  background: linear-gradient(135deg, #00ff88ff, #00e676, #00ff88ff);       
+  -webkit-background-clip: text;        
+  -webkit-text-fill-color: transparent;       
+  background-size: 200% 200%;       
+  animation: ${gradientFlow} 3s ease infinite;        
+  font-weight: 900;       
+  display: inline-block;       
+`;        
+        
+const SubTitle = styled.span`       
+  font-size: 1.6rem;        
+  font-weight: 300;       
+  color: rgba(255, 255, 255, 0.9);        
+  display: block;       
+  margin-top: 15px;       
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);       
+`;        
+        
+const DescriptionText = styled(Typography).attrs({ variant: 'body1' })`        
+  margin: 30px 0;       
+  letter-spacing: 0.5px;        
+  line-height: 1.8 !important;        
+  text-align: center;       
+  color: rgba(255, 255, 255, 0.9);       
+  animation: ${fadeInUp} 1.4s ease-out;       
+  font-weight: 400 !important;        
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);       
+  font-size: 1.1rem !important;       
+`;        
+        
+const FeaturesContainer = styled.div`        
+  display: flex;        
+  flex-direction: column;       
+  gap: 15px;        
+  margin: 30px 0;       
+  animation: ${fadeInUp} 1.6s ease-out;       
+`;        
+        
+const FeatureItem = styled.div`       
+  display: flex;        
+  align-items: center;        
+  gap: 15px;        
+  color: rgba(255, 255, 255, 0.95);        
+  font-size: 1rem;       
+  padding: 10px 0;        
+`;        
+        
+const AnimatedDot = styled.div`        
+  width: 12px;       
+  height: 12px;        
+  border-radius: 50%;       
+  background: #00ff88ff;        
+  animation: ${pulse} 2s infinite;        
+  flex-shrink: 0;       
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);       
+`;        
+        
+const FeatureText = styled.span`        
+  font-weight: 500;       
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);       
+`;        
+        
+const ActionButtons = styled(Box)`        
+  display: flex;        
+  flex-direction: column;       
+  align-items: center;        
+  justify-content: center;        
+  gap: 25px;        
+  padding: 40px 0 20px;        
+  animation: ${fadeInUp} 1.8s ease-out;       
+`;        
+        
+const ButtonLink = styled(Link)`        
   text-decoration: none;        
   width: 100%;        
-  max-width: 300px;       
+  max-width: 350px;       
 `;        
         
-const AnimatedButton = styled(Button)`        
+const PrimaryButton = styled(Button)`        
   background: linear-gradient(135deg, #00ff88ff, #00e676) !important;       
-  padding: 14px 28px !important;        
-  border-radius: 12px !important;       
+  padding: 16px 32px !important;        
+  border-radius: 15px !important;       
+  font-weight: 700 !important;        
+  font-size: 1.2rem !important;       
+  text-transform: none !important;        
+  animation: ${fadeInUp} 2s ease-out, ${pulse} 3s infinite ease-in-out;       
+  transition: all 0.4s ease !important;       
+  backdrop-filter: blur(10px);        
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;       
+        
+  &:hover {       
+    transform: translateY(-5px) scale(1.02) !important;       
+    box-shadow:        
+      0 20px 50px rgba(0, 255, 136, 0.5),        
+      0 0 0 1px rgba(255, 255, 255, 0.1) !important;        
+  }       
+`;        
+        
+const SecondaryButton = styled(Button)`       
+  border: 2px solid #00ff88ff !important;       
+  color: #00ff88ff !important;        
+  padding: 14px 32px !important;        
+  border-radius: 15px !important;       
   font-weight: 600 !important;        
   font-size: 1.1rem !important;       
   text-transform: none !important;        
-  animation: ${fadeInUp} 2s ease-out, ${pulseGlow} 3s infinite ease-in-out;       
-  transition: all 0.3s ease !important;       
-        
-  &:hover {       
-    transform: translateY(-3px) !important;       
-    box-shadow: 0 15px 40px rgba(0, 255, 136, 0.4) !important;        
-  }       
-`;        
-        
-const AnimatedOutlineButton = styled(Button)`       
-  border: 2px solid #00ff88ff !important;       
-  color: #00ff88ff !important;        
-  padding: 12px 28px !important;        
-  border-radius: 12px !important;       
-  font-weight: 600 !important;        
-  font-size: 1rem !important;       
-  text-transform: none !important;        
   animation: ${fadeInUp} 2.2s ease-out;       
-  transition: all 0.3s ease !important;       
+  transition: all 0.4s ease !important;       
+  backdrop-filter: blur(10px);        
+  background: rgba(0, 0, 0, 0.3) !important;       
         
   &:hover {       
-    background: rgba(0, 255, 136, 0.1) !important;        
+    background: rgba(0, 255, 136, 0.15) !important;        
     border-color: #00ff88ff !important;       
-    transform: translateY(-2px) !important;       
-    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2) !important;        
+    transform: translateY(-3px) !important;       
+    box-shadow:        
+      0 15px 40px rgba(0, 255, 136, 0.3),        
+      0 0 0 1px rgba(255, 255, 255, 0.05) !important;        
   }       
 `;        
         
-const SignupSection = styled.div`       
+const SignupPrompt = styled.div`       
   margin-top: 20px;       
   text-align: center;       
+  padding: 20px;        
+  background: rgba(0, 255, 136, 0.05);        
+  border-radius: 12px;       
+  border: 1px solid rgba(0, 255, 136, 0.1);       
 `;        
         
-const AnimatedLink = styled(Link)`        
-  color: #00ff88ff;       
+const PromptText = styled(Typography).attrs({ variant: 'body2' })`        
+  color: rgba(255, 255, 255, 0.9) !important;        
+  font-size: 1rem !important;       
+`;        
+        
+const SignupLink = styled(Link)`        
+  color: #00ff88ff !important;       
   text-decoration: none;        
-  font-weight: 600;       
+  font-weight: 700;       
   position: relative;       
   transition: all 0.3s ease;        
+  text-shadow: 0 2px 10px rgba(0, 255, 136, 0.3);       
         
   &::after {        
     content: "";        
@@ -412,10 +617,10 @@ const AnimatedLink = styled(Link)`
   }       
         
   &:hover {       
-    color: #00e676;       
+    color: #00e676 !important;       
         
     &::after {        
       width: 100%;        
     }       
   }       
-`;                                                                                                                                    
+`;          

@@ -1,15 +1,45 @@
-import React from 'react' ;                                                                                                                                   
-import { Card, CardContent, Typography, Grid, Box, Avatar, Container, Paper } from '@mui/material';             
+import React from 'react';                                                                                                                                   
+import { Card, CardContent, Typography, Grid, Box, Avatar, Container, CircularProgress } from '@mui/material';             
 import { useSelector } from 'react-redux';              
               
 const StudentProfile = () => {              
-  const { currentUser, response, error } = useSelector((state) => state.user);              
+  const { currentUser, response, error, loading } = useSelector((state) => state.user);              
               
+  // Show loading state while user data is being fetched
+  if (loading) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <CircularProgress />
+        <Typography sx={{ ml: 2 }}>Loading profile...</Typography>
+      </Box>
+    );
+  }
+
+  // Show error state if user data failed to load
+  if (error) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>
+        <Typography variant="h5" color="error">Error loading profile</Typography>
+        <Typography variant="body1" sx={{ mt: 1 }}>{error.message || 'Please try again later'}</Typography>
+      </Box>
+    );
+  }
+
+  // Redirect or show message if no user data
+  if (!currentUser) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <Typography variant="h6">No user data available</Typography>
+      </Box>
+    );
+  }
+
+  // Safe access to nested properties with fallbacks
+  const sclassName = currentUser.sclassName || {};
+  const studentSchool = currentUser.school || {};
+  
   if (response) { console.log(response) }             
   else if (error) { console.log(error) }              
-              
-  const sclassName = currentUser.sclassName             
-  const studentSchool = currentUser.school              
               
   return (              
     <>              
@@ -38,7 +68,7 @@ const StudentProfile = () => {
                       fontWeight: 'bold'              
                     }}              
                   >             
-                    {String(currentUser.name).charAt(0)}              
+                    {currentUser.name ? String(currentUser.name).charAt(0).toUpperCase() : 'S'}              
                   </Avatar>             
                 </Box>              
               </Grid>             
@@ -55,7 +85,7 @@ const StudentProfile = () => {
                       WebkitTextFillColor: 'transparent',             
                     }}              
                   >             
-                    {currentUser.name}              
+                    {currentUser.name || 'Student Name'}              
                   </Typography>             
                 </Box>              
               </Grid>             
@@ -70,7 +100,7 @@ const StudentProfile = () => {
                       fontWeight: 500             
                     }}              
                   >             
-                    Student Roll No: {currentUser.rollNum}              
+                    Student Roll No: {currentUser.rollNum || 'Not assigned'}              
                   </Typography>             
                 </Box>              
               </Grid>             
@@ -85,7 +115,7 @@ const StudentProfile = () => {
                       fontWeight: 500             
                     }}              
                   >             
-                    Class: {sclassName.sclassName}              
+                    Class: {sclassName.sclassName || 'Not assigned'}              
                   </Typography>             
                 </Box>              
               </Grid>             
@@ -100,7 +130,7 @@ const StudentProfile = () => {
                       fontWeight: 500             
                     }}              
                   >             
-                    School: {studentSchool.schoolName}              
+                    School: {studentSchool.schoolName || 'Not available'}              
                   </Typography>             
                 </Box>              
               </Grid>             
@@ -138,37 +168,37 @@ const StudentProfile = () => {
                 <Grid item xs={12} sm={6}>              
                   <InfoItem               
                     label="Full Name"             
-                    value={currentUser.name}              
+                    value={currentUser.name || 'Not available'}              
                   />              
                 </Grid>             
                 <Grid item xs={12} sm={6}>              
                   <InfoItem               
                     label="Email"             
-                    value={currentUser.email}             
+                    value={currentUser.email || 'Not available'}             
                   />              
                 </Grid>             
                 <Grid item xs={12} sm={6}>              
                   <InfoItem               
                     label="Roll Number"             
-                    value={currentUser.rollNum}             
+                    value={currentUser.rollNum || 'Not assigned'}             
                   />              
                 </Grid>             
                 <Grid item xs={12} sm={6}>              
                   <InfoItem               
                     label="Class"             
-                    value={sclassName.sclassName}             
+                    value={sclassName.sclassName || 'Not assigned'}             
                   />              
                 </Grid>             
                 <Grid item xs={12} sm={6}>              
                   <InfoItem               
                     label="School"              
-                    value={studentSchool.schoolName}              
+                    value={studentSchool.schoolName || 'Not available'}              
                   />              
                 </Grid>             
                 <Grid item xs={12} sm={6}>              
                   <InfoItem               
                     label="Student ID"              
-                    value={currentUser._id}             
+                    value={currentUser._id || 'Not available'}             
                   />              
                 </Grid>             
               </Grid>             
@@ -214,4 +244,4 @@ const InfoItem = ({ label, value }) => (
   </Box>              
 );              
               
-export default StudentProfile             
+export default StudentProfile;
